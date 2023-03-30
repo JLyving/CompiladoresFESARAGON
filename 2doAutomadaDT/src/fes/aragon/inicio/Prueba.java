@@ -15,62 +15,24 @@ public class Prueba {
 		for (int i = 0; i < app.token.length(); i++) {
 			char simbolo = app.token.charAt(i);
 
-			// Este while sera con el que se compararan los caracteres con el abecedario
-			// aceptado
-			int j = 0;
-			while (j < app.columnas.length) {
-
-				// Este if checa cuando se trata de un simbolo igual al primer caracter del
-				// abecedario aceptado
-				if (app.columnas[j] == simbolo) {
+			for (int j = 0; j < app.columnas.length; j++) {
+				app.correcto = false;
+				
+				if (app.columnas[j] == simbolo ) {
 					app.columna = j;
+					app.correcto = true;
 					break;
-				} else if (j == 0) { // Este else if sera para checar el simbolo igual al segundo o tercer caracter
-										// del abecedario aceptado
-					j++;
-					if (app.columnas[j] == simbolo) {
-						app.columna = j;
-						break;
-					}
-					if (j != 0) {
-						j++;
-						if (app.columnas[j] == simbolo) {
-							app.columna = j;
-							break;
-						}
-					}
-
-				} else if (j != 0) { // Este else if sirve para checar al caracter mayor al tercero del abecedario
-										// aceptado
-					j++;
-					if (app.columnas[j] == simbolo) {
-						app.columna = j;
-						break;
-					} else if (app.columnas[j] != simbolo) { // Este else if anidado sirve para los caracteres que no
-																// esten dentro del abecedario aceptado
-						j = 0;
-						app.correcto = false;
-						break;
-					}
-				}
-
+				} 
+				
 			}
 			
-			// Este if checa si la palabra es correcta o no
-			if (!app.correcto) {
-				app.estado = 0;
-				break;
-			}
-			
-			// Esta asignasion es para ir moviendo el estado hasta llegar al estado final o correcto
 			app.estado = app.tabla[app.estado][app.columna];
-
+			
 		}
-
-		if (app.estado == 1) {
-			System.out.println("Aceptada");
+		if(app.estado == 3) {
+			System.out.println("aceptada");
 		} else {
-			System.out.println("No aceptada");
+			System.out.println("no aceptada");
 		}
-	}
+}
 }
