@@ -28,20 +28,23 @@ public class AFD {
 						switch (estado) {
 						case 1:
 							if (l[i] == 'a') {
-								estado = 3;
-							} else if (l[i] == '1') {
 								estado = 2;
 							} else {
 								break;
 							}
 							break;
 						case 2:
+							if (l[i] == 'a') {
+								estado = 3;
+							} else {
+								break;
+							}
 							break;
 						case 3:
 							if (l[i] == 'a') {
-								estado = 3;
-							} else if (l[i] == '1') {
-								estado = 3;
+								estado = 4;
+							} else {
+								break;
 							}
 							break;
 						default:
@@ -53,10 +56,10 @@ public class AFD {
 				}
 			}
 
-			if (estado != 3) {
-				System.out.println("Error en rutina");
+			if (estado != 4) {
+				System.out.println("No aceptada");
 			} else {
-				System.out.println("Identicador valido");
+				System.out.println("Aceptada");
 			}
 
 		} catch (Exception e) {

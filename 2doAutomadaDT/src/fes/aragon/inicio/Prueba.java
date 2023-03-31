@@ -1,5 +1,8 @@
 package fes.aragon.inicio;
 
+
+
+
 public class Prueba {
 	private char[] columnas = { 'a', 'b', 'c', ':' };
 	private int[][] tabla = { { 1, 0, 0, 0 }, { 2, 1, 1, 0 }, { 3, 2, 2, 0 }, { 4, 3, 3, 1 }, { 4, 4, 4, 0 } };
@@ -9,6 +12,7 @@ public class Prueba {
 	private boolean correcto = true;
 
 	public static void main(String[] args) {
+	
 		Prueba app = new Prueba();
 
 		// Este for recorrera la palabra separando sus caracteres para evaluarlos
@@ -26,10 +30,14 @@ public class Prueba {
 				
 			}
 			
+			if(app.correcto != true) {
+				break;
+			}
+			
 			app.estado = app.tabla[app.estado][app.columna];
 			
 		}
-		if(app.estado == 3) {
+		if(app.estado == 1 && app.correcto == true) {
 			System.out.println("aceptada");
 		} else {
 			System.out.println("no aceptada");
